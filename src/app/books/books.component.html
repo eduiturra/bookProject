@@ -1,0 +1,31 @@
+<h2>Lista de Libros</h2>
+<div>
+  <span>Título </span>
+  <input type="text" (input)="checkObjectChanged($event)">
+</div>
+<br>
+<div>
+  <span>Ordenar </span>
+  <select name="orderTitulo" id=""(change) ="checkOrderTitle($event)">
+     <option value=""></option>
+     <option value="desc-titulo">Título Descendente</option>
+     <option value="asc-titulo">Título Ascendente</option>
+     <option value="desc-editorial">Editorial Descendente</option>
+     <option value="asc-editorial">Editorial Ascendente</option>
+  </select>
+</div>
+<br>
+<table>
+  <tr>
+    <th>Título</th>
+    <th>Autor</th>
+    <th>Descripción</th>
+    <th>Editorial</th>
+  </tr>
+  <tr *ngFor="let book of filterBooks">
+    <td><a [routerLink]="['detail',book.bookId]">{{book.title}}</a></td>
+    <td>{{book.authors}}</td>
+    <td>{{book.short_description}}</td>
+    <td>{{book.editorial}}</td>
+  </tr>
+</table>
